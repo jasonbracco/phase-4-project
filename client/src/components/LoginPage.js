@@ -7,9 +7,16 @@ function LoginPage() {
 
 
     return (
-    
         <div>
-            Hi!
+            <div>
+                Login Here!  If you are not a current user, you will be asked to create an account.
+            </div>
+            <div>
+            {/* Create login form here */}
+            </div>
+            <div>
+                {/* Create sign up form here */}
+            </div>
         </div>
 
     )
