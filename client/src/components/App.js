@@ -14,6 +14,8 @@ function App() {
     })
   }, [])
 
+  if (!user) return <LoginPage /> 
+
   return (
     <div className="App">
       <header className="App-header">
