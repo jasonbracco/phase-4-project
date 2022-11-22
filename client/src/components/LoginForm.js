@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function LoginForm(){
+function LoginForm({setUser}){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -8,18 +8,18 @@ function LoginForm(){
 
     function handleLoginSubmit(e){
         e.preventDefault()
-        fetch("login route here", {
+        fetch("ADD IN ROUTE", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({username, password}),
         }).then((response) => {
             if (response.ok){
-                response.json().then((user) => onLogin(user))
+                response.json().then((user) => setUser(user))
             }
             else{
-                response.json().then((error) => setErrors(error.errors)) //If the user is not valid, then return the array of errors that will be coded in the controllers
+                response.json().then((error) => setErrors(error.errors)) 
             }
         })
     }

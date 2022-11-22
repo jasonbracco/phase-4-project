@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-function SignupForm(){
+function SignupForm({setUser}){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -8,9 +8,62 @@ function SignupForm(){
     const [age, setAge] = useState("")
     const [bio, setBio] = useState("")
     const [imageURL, setImageURL] = useState("")
+    const [errors, setErrors] = useState([])
+
+    function handleSignupSubmit(e){
+        e.preventDefault()
+        fetch("ADD IN ROUTE", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                password_confirmation: passwordConfirmation,
+                age,
+                bio,
+                imageURL: imageURL
+            })
+        }).then((response) => {
+            if (response.ok){
+                response.json().then((user) => setUser(user))
+            }
+            else{
+                response.json().then((error) => setErrors(error.errors))
+            }
+        })
+
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setErrors([]);
+        setIsLoading(true);
+        fetch("/api/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+            password_confirmation: passwordConfirmation,
+            image_url: imageUrl,
+            bio,
+          })
+        }).then((r) => {
+          setIsLoading(false);
+          if (r.ok) {
+            r.json().then((user) => onLogin(user));
+          } else {
+            r.json().then((err) => setErrors(err.errors));
+          }
+        });
+      }
 
     return (
-        <form>
+        <form onSubmit={handleSignupSubmit}>
             <h3>Username:</h3>
             <input
                 type="text"
@@ -65,6 +118,11 @@ function SignupForm(){
                 placeholder="Profile Picture"
                 onChange={(e) => setImageURL(e.target.value)}
             />
+            <div className="login_erors">
+                {errors.map(error => error)}
+            </div>
         </form>
     )
 }
+
+export default SignupForm

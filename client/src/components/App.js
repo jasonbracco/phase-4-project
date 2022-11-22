@@ -15,7 +15,7 @@ function App() {
     })
   }, [])
 
-  if (!user) return <LoginPage /> 
+  if (!user) return <LoginPage setUser={setUser}/> 
 
   return (
     <div className="App">
