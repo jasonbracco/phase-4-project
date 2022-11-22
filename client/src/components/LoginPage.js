@@ -13,9 +13,7 @@ function LoginPage() {
             <div>
                 Login Here!  If you are not a current user, you will be asked to create an account.
             </div>
-            <div>
-            {/* Create login form here */}
-            </div>
+            <LoginForm />
             <div>
                 {/* Create sign up form here */}
             </div>
