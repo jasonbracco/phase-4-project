@@ -4,6 +4,7 @@ function SignupForm(){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [age, setAge] = useState("")
     const [bio, setBio] = useState("")
     const [imageURL, setImageURL] = useState("")
@@ -28,6 +29,15 @@ function SignupForm(){
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
             />
+            <h3>Confirm Password:</h3>
+            <input
+                type="text"
+                name="password-confirmation"
+                value={passwordConfirmation}
+                autoComplete="off"
+                placeholder="Confirm Password"
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                />
             <h3>Age:</h3>
             <input
                 type="number"
