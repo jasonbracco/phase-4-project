@@ -18,12 +18,12 @@ function SignupForm({setUser}){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username,
-                password,
+                username: username,
+                password: password,
                 password_confirmation: passwordConfirmation,
-                age,
-                bio,
-                imageURL: imageURL
+                age: age,
+                bio: bio,
+                image_URL: imageURL
             })
         }).then((response) => {
             if (response.ok){
