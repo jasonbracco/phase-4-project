@@ -4,10 +4,29 @@ function LoginForm(){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState([])
+
+    function handleLoginSubmit(e){
+        e.preventDefault()
+        fetch("login route here", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({username, password}),
+        }).then((response) => {
+            if (response.ok){
+                response.json().then((user) => onLogin(user))
+            }
+            else{
+                response.json().then((error) => setErrors(error.errors)) //If the user is not valid, then return the array of errors that will be coded in the controllers
+            }
+        })
+    }
 
     return(
         <div>
-            <form>
+            <form onSubmit={handleLoginSubmit}>
                 <input
                     type="text"
                     name="username"
