@@ -4,7 +4,7 @@ function LoginForm(){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([]) 
 
     function handleLoginSubmit(e){
         e.preventDefault()
@@ -27,6 +27,7 @@ function LoginForm(){
     return(
         <div>
             <form onSubmit={handleLoginSubmit}>
+                <h3>Username:</h3>
                 <input
                     type="text"
                     name="username"
@@ -35,6 +36,7 @@ function LoginForm(){
                     placeholder="Username"
                     onChange={(e) => setUsername(e.target.value)}
                 />
+                <h3>Password:</h3>
                 <input
                     type="text"
                     name="password"
@@ -44,6 +46,9 @@ function LoginForm(){
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </form>
+            <div className="login_erors">
+                {errors.map(error => error)}
+            </div>
         </div>
 
     )
