@@ -8,14 +8,14 @@ function App() {
 
   //auto login if user matches
   useEffect(() => {
-    fetch ("/create route for get request").then((response) => {
+    fetch ("/api/login").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user))
       }
     })
   }, [])
 
-  if (!user) return <LoginPage setUser={setUser}/> 
+  // if (!user) return <LoginPage setUser={setUser}/> 
 
   return (
     <div className="App">
