@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true
     validates :bio, presence: true
-    validates :image_URL, presence: true
+    validates :image_url, presence: true
     validates :name, presence: true
     validates :age, presence: true
 

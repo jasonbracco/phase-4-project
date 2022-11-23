@@ -23,7 +23,7 @@ function SignupForm({setUser}){
                 password_confirmation: passwordConfirmation,
                 age: age,
                 bio: bio,
-                image_URL: imageURL
+                image_url: imageURL
             })
         }).then((response) => {
             if (response.ok){
