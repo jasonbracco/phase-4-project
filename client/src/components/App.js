@@ -10,12 +10,12 @@ function App() {
   useEffect(() => {
     fetch ("/api/login").then((response) => {
       if (response.ok) {
-        response.json().then((user) => setUser(user))
+        response.json().then((user) => setUser(user));
       }
-    })
-  }, [])
+    });
+  }, []);
 
-  // if (!user) return <LoginPage setUser={setUser}/> 
+  if (!user) return <LoginPage setUser={setUser}/> 
 
   return (
     <div className="App">

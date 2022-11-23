@@ -6,9 +6,8 @@ function LoginPage({setUser}) {
 
     return (
         <div>
-            <div>
-                Login Here!  If you are not a current user, you will be asked to create an account.
-            </div>
+            <p>Login Here!  If you are not a current user, you will be asked to create an account.</p>
+            
             <LoginForm setUser={setUser}/>
             <SignupForm setUser={setUser}/>
         </div>
