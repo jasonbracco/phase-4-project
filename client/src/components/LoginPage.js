@@ -18,11 +18,17 @@ function LoginPage({setUser}) {
                         </button>
                     </div>
                 : 
-                    <div>Want to sign up?
-                        <SignupForm setUser={setUser}/>
+                    <div>
+                        <p>Want to sign up?</p>
                         <button onClick={() => setSignedUp(true)}>
                             Oops!  Go Back...
                         </button>
+                        <SignupForm setUser={setUser}/>
+                        <p>
+                            <button>
+                                Sign Up!
+                            </button>
+                        </p>
                     </div>
                 }   
             </div>
