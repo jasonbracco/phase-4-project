@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 function SignupForm({setUser}){
 
@@ -35,32 +35,6 @@ function SignupForm({setUser}){
         })
 
     }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        setErrors([]);
-        setIsLoading(true);
-        fetch("/api/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            password,
-            password_confirmation: passwordConfirmation,
-            image_url: imageUrl,
-            bio,
-          })
-        }).then((r) => {
-          setIsLoading(false);
-          if (r.ok) {
-            r.json().then((user) => onLogin(user));
-          } else {
-            r.json().then((err) => setErrors(err.errors));
-          }
-        });
-      }
 
     return (
         <form onSubmit={handleSignupSubmit}>
