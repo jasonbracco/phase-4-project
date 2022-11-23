@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar setUser={setUser}/>
       <Routes>
         <Route
           path="/cities"
