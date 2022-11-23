@@ -1,15 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignupForm"
 
 function LoginPage({setUser}) {
 
+    const [signedUp, setSignedUp] = useState(true)
+
     return (
         <div>
             <p>Login Here!  If you are not a current user, you will be asked to create an account.</p>
-            
-            <LoginForm setUser={setUser}/>
-            <SignupForm setUser={setUser}/>
+            <div>
+                {signedUp ? 
+                    <div>
+                        <LoginForm setUser={setUser}/> 
+                        <button onClick={() => setSignedUp(false)}>
+                            Click to create new Account
+                        </button>
+                    </div>
+                : 
+                    <div>Want to sign up?
+                        <SignupForm setUser={setUser}/>
+                        <button onClick={() => setSignedUp(true)}>
+                            Oops!  Go Back...
+                        </button>
+                    </div>
+                }   
+            </div>
         </div>
 
     )
