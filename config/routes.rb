@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :frontend do
     post "/login", to: "sessions#create"
+    post "/signup", to: "users#create"
   end
 
 
